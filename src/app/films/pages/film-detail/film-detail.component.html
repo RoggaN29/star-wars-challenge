@@ -4,50 +4,43 @@
 
 <ng-template #divFilm>
 
-  <div fxLayout="row"
-      fxLayout.xs="column"
-      fxLayoutGap="20px">
+  <div class="container--detail">
+    <div>
+      <h1>{{ film.title }} <small>Episode: {{ film.episode_id }}</small></h1>
+      <mat-divider></mat-divider>
+      <br>
+      <img mat-card-image [src]="film | image">
+    </div>
 
-      <div fxFlex="50">
-        <h1>{{ film.title }} <small>Episode: {{ film.episode_id }}</small></h1>
-        <mat-divider></mat-divider>
-        <br>
-        <img mat-card-image [src]="film | image">
-      </div>
+    <div>
+      <h1>Characters</h1>
+      <mat-divider></mat-divider>
+      <br>
+      <ul>
+        <li *ngFor="let character of characters">{{character | reverse }}</li>
+      </ul>
+    </div>
 
-      <div fxFlex="50">
-        <h1>Characters</h1>
-        <mat-divider></mat-divider>
-        <br>
-        <ul>
-          <li *ngFor="let character of characters">{{character | reverse }}</li>
-        </ul>
-      </div>
-  </div>
+    <div>
+      <h1>Planets</h1>
+      <mat-divider></mat-divider>
+      <br>
+      <ul>
+        <li *ngFor="let planet of planets">{{planet}}</li>
+      </ul>
+    </div>
 
-  <div fxLayout="row"
-      fxLayout.xs="column"
-      fxLayoutGap="30px">
+    <div>
+      <h1>Starships</h1>
+      <mat-divider></mat-divider>
+      <br>
+      <ul>
+        <li *ngFor="let starship of starships">{{starship}}</li>
+      </ul>
+    </div>
 
-      <div fxFlex="50">
-        <h1>Planets</h1>
-        <mat-divider></mat-divider>
-        <br>
-        <ul>
-         <li *ngFor="let planet of planets">{{planet}}</li>
-        </ul>
-      </div>
-
-      <div fxFlex="50">
-        <h1>Starships</h1>
-        <mat-divider></mat-divider>
-        <br>
-        <ul>
-         <li *ngFor="let starship of starships">{{starship}}</li>
-        </ul>
-      </div>
+    <button routerLink="/films" mat-button color="warn">Go back</button>
   </div>
 
 </ng-template>
 
-<button routerLink="/films" mat-button color="warn">Go back</button>
