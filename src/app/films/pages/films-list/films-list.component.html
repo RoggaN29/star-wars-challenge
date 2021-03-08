@@ -1,0 +1,17 @@
+<div *ngIf="!films; else divFilms">
+  <mat-spinner></mat-spinner>
+</div>
+
+<ng-template #divFilms class="animate__animated animate__fadeIn">
+  <h1>Star wars</h1>
+  <mat-divider></mat-divider>
+  <br>
+
+  <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="20px" fxLayout.sm="column">
+    <div fxFlex="15" fxFlex.md="30" fxFlex.xs="100" *ngFor="let film of films, let i = index">
+
+      <app-film-card [film]="film" [index]="i + 1"></app-film-card>
+
+    </div>
+  </div>
+</ng-template>

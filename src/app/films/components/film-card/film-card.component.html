@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Episode {{ film.episode_id }}</mat-card-title>
+    <mat-card-title [routerLink]="['/films', index]" style="cursor: pointer;">{{ film.title }}</mat-card-title>
+    <mat-card-subtitle>Director: {{ film.director }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <img mat-card-image [src]="film | image">
+
+  <mat-card-content>
+    <h3><strong>Release date: {{ film.release_date }}</strong></h3>
+    <p>Opening: {{ film.opening_crawl }}</p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button [routerLink]="['/films', index]" mat-button color="warn">View detail</button>
+  </mat-card-actions>
+</mat-card>

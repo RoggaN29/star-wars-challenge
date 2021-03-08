@@ -1,0 +1,32 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push">
+    <mat-toolbar color="primary">
+      <button  routerLink="./films" mat-icon-button (click)="sidenav.toggle()">
+        Home
+      </button>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list role="list">
+    <a *ngFor="let film of films, let i = index"  [routerLink]="['/films', i + 1]" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon>movie</mat-icon>
+        <span>Episode {{film.episode_id}}</span>
+      </a>
+      <a routerLink="./contact/contactForm" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon>contact_page</mat-icon>
+        <span>Contact</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-toolbar>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>

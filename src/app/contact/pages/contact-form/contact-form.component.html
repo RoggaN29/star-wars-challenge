@@ -1,0 +1,48 @@
+<h1>Contact</h1>
+<mat-divider></mat-divider>
+<br>
+
+<div class="container--form">
+  <form [formGroup]="contactForm" autocomplete="off" (ngSubmit)="subscribe()">
+
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="name" formControlName="name">
+    </mat-form-field>
+    <span *ngIf="validRequired('name')" class="alert danger">Required</span>
+    <span *ngIf="validPattern('name')" class="alert danger">Only letters</span>
+
+    <mat-form-field>
+      <mat-label>Lastname</mat-label>
+      <input matInput placeholder="lastName" formControlName="lastName">
+    </mat-form-field>
+    <span *ngIf="validRequired('lastName')" class="alert danger">Required</span>
+    <span *ngIf="validPattern('lastName')" class="alert danger">Only letters</span>
+
+
+    <mat-form-field appearance="fill">
+      <mat-label>Birthday</mat-label>
+      <input matInput [matDatepicker]="picker" placeholder="birthday" formControlName="birthday">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+    </mat-form-field>
+    <span *ngIf="validRequired('birthday')" class="alert danger">Required</span>
+    <span *ngIf="validAdult()" class="alert danger">Only adults</span>
+
+    <button type="submit" [disabled]="contactForm.invalid" mat-button color="warn">Subscribe</button>
+  </form>
+
+  <!-- <div>
+    <span>Valid</span>
+    <pre>{{ contactForm.valid }}</pre>
+    <span>Pristine</span>
+    <pre>{{ contactForm.pristine }}</pre>
+    <span>Touched</span>
+    <pre>{{ contactForm.touched }}</pre>
+    <span>Value</span>
+    <pre>{{ contactForm.value | json }}</pre>
+    <span>Birthday</span>
+    <pre>{{ contactForm.controls.birthday.errors | json }}</pre>
+  </div> -->
+
+</div>
